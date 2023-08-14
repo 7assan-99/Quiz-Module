@@ -1,0 +1,21 @@
+<form class="w-100 container-fluid" [formGroup]="form" (ngSubmit)="create(form.value)">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 mt-3">
+                <input type="text" formControlName="title" class="form-control" placeholder="Enter Course Name">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 mt-3">
+                <textarea name="description" formControlName="description" class="form-control" cols="30" placeholder="Enter Description"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" [disabled]="!form.valid" class="btn btn-outline-primary custom-button">Create</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+.question {
+    color: var(--color-secondary);
+    font-size: 16px;
+}
+
+.confirm-button {
+    color: var(--color-dark-blue) !important;
+    transition: all 0.3s linear;
+
+    &:hover {
+        background-color: var(--color-dark-blue);
+        color: white !important;
+        transition: all 0.3s linear;
+    }
+}
+
+.form-control {
+    border-color: var(--color-dark-blue);
+    border-width: 2px;
+    background-color: var(--color-primary);
+}
+
+.form-control:focus {
+    box-shadow: none;
+    color: var(--color-secondary) !important;
+}
+
+.form-control::placeholder {
+    color: var(--color-secondary) !important;
+}

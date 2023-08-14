@@ -1,0 +1,36 @@
+.form-control {
+    border-color: var(--color-dark-blue);
+    border-width: 2px;
+    background-color: var(--color-primary);
+}
+
+.spinners-container {
+    width: 300px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    color: var(--color-secondary) !important;
+}
+
+.form-control::placeholder {
+    color: var(--color-secondary) !important;
+}
+
+#accordion{
+    transition: all 0.5s;
+}
+.card{
+    transition: all 0.5s;
+}
+
+.card {
+    border: 1px solid var(--color-dark-blue) !important;
+
+}
+
+.card-header {
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-dark-blue);
+    border-radius: 5px;
+}

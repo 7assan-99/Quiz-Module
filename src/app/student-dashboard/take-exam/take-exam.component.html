@@ -1,0 +1,15 @@
+<div class="fluid-container">
+    <h1 *ngIf="!exam" class="poppins mt-5">No Exam is Available</h1>
+    <div *ngIf="exam" class="text-center">
+        <h1 class="title poppins">{{exam.Title}}</h1>
+        <p class="description mt-4 mb-3 poppins">{{exam.Description}}</p>
+    <div class="d-flex flex-column align-items-start mt-5">
+        <p class="poppins">Start Date: &nbsp; {{startTime}}</p>
+        <p class="poppins">End Date: &nbsp; {{endTime}}</p>
+        <p class="poppins">No.of Attempts: &nbsp; {{exam.NoOfAttempts}}</p>
+        <p class="poppins">Attempt Time(mins): &nbsp; {{exam.TimeToAttempt}}</p>
+       <button class="btn custom-button mt-3" [disabled]="!canAttempt && onGoingAttempt" [hidden]="onGoingAttempt" (click)="createAttempt()">Take Attempt</button>
+        <button class="btn custom-button mt-3" [disabled]="!onGoingAttempt" [hidden]="!onGoingAttempt" [routerLink]="['/sd/exam/attempt/',onGoingAttempt ? onGoingAttempt.ID: '']">Resume Attempt</button>
+        </div>
+    </div>
+</div>

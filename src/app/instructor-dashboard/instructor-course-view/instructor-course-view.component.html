@@ -1,0 +1,16 @@
+
+<div class="container-fluid m-0 mt-4 flex-container">
+    <h2 class="prevent-select title">Course: {{course.Name}}</h2>
+
+    <div class="d-flex flex-lg-row h-100 gap-3 flex-md-column flex-sm-column flex-xs-column">
+        
+        <ul class="nav nav-pills shadow d-flex flex-lg-column flex-md-column flex-sm-column mt-5 flex-xs-column">
+            <li class="nav-item mx-auto p-0"><a class="nav-link p-3 nv-1" routerLinkActive="active" [routerLink]="['overview']"><mat-icon>description</mat-icon></a></li>
+            <li class="nav-item mx-auto p-0"><a class="nav-link p-3 nv-2" routerLinkActive="active" [routerLink]="['createExam']"><mat-icon>create</mat-icon></a></li>
+            <li class="nav-item mx-auto p-0"><a class="nav-link p-3 nv-3" routerLinkActive="active" [routerLink]="['exam-grade-list']"><mat-icon>view_list</mat-icon></a></li>
+        </ul>
+        <div class="right-column d-flex justify-content-center">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

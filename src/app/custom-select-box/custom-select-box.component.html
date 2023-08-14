@@ -1,0 +1,16 @@
+<div class="wrap" clickedOutside (clickOutside)="checkIfClickOutside($event)">
+    <div class="select-box" [id]="'select-box'+id" (click)="selectBox()">
+        <p class="select-placeholder" >{{ selectedElement !== '' ? selectedElement : 'Select '+title}}</p>
+        <mat-icon id="arrow-icon">keyboard_arrow_down</mat-icon>
+    </div>
+    <div class="options-box"  [id]="'option-box'+id" *ngIf="listSource">
+        <div class="search-box" >
+            <input type="text" (keyup)="searchOptions($event)" class="me-3" placeholder="Search">
+            <mat-icon  class="search-icon">search</mat-icon>
+        </div>
+        <div class="options" >
+            <li (click)="selectOption(l.ID)" *ngFor="let l of list">{{l.Name}}</li>
+            <li *ngIf="list.length == 0">Oops your search not found or wait for results.</li>
+        </div>
+    </div>
+</div>

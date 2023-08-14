@@ -1,1 +1,161 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --color-primary: #F4FAFF;
+    --color-secondary: #08090A;
+    --color-dark-blue: #0184d4;
+    --color-dark-gray: #2C302E;
+    --color-outer-space: #474A48;
+
+    --primary-text-color: #08090A;
+
+    --font-size-xxx-lg: 68px;
+    --font-size-xx-lg: 48px;
+    --font-size-x-lg: 42px;
+    --font-size-lg: 32px;
+    --font-size-md: 24px;
+    --font-size-sm: 20px;
+    --font-size-x-sm: 18px;
+}
+
+.mat-mdc-snack-bar-container {
+    &.success-snack-bar {
+            --mdc-snackbar-container-color: white;
+            --mat-mdc-snack-bar-button-color: red;
+            --mdc-snackbar-supporting-text-color: var(--color-secondary);
+    }
+   &.danger-snack-bar {
+        --mdc-snackbar-container-color: red;
+        --mat-mdc-snack-bar-button-color: white;
+        --mdc-snackbar-supporting-text-color: white;
+    }
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+
+    background: #888;
+
+    &:hover {
+        background: var(--color-dark-blue);
+    }
+}
+
+body{
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    font-family: 'Poppins';
+}
+
+.prevent-select{
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+}
+
+.poppins{
+    font-family: 'Poppins';
+}
+
+.nav-item {
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+
+    @media screen and (min-width: 993px) {
+        display: flex;
+        flex-direction: column;
+        line-height: 10px;
+    }
+
+    &.active {
+        &>.nav-link {
+            color: var(--color-dark-blue);
+        }
+
+        color: var(--color-dark-blue);
+
+        @media screen and (min-width: 993px) {
+            &::after {
+                content: '.';
+                text-align: center;
+                font-size: 30px;
+            }
+        }
+
+        &::after {
+            font-size: 30px;
+        }
+    }
+}
+
+.flex-xs-column {
+    @media screen and (max-width: 575.98px) {
+        flex-direction: column;
+    }
+}
+
+.flex-xs-row {
+    @media screen and (max-width: 575.98px) {
+        flex-direction: row;
+    }
+}
+
+.form-control {
+    border-color: var(--color-dark-blue);
+    border-width: 0px !important;
+    background-color: var(--color-primary);
+    transition: all 0.5s ease-in-out;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+    border-width:2px !important;
+    color: var(--color-secondary) !important;
+}
+
+.form-control:hover {
+    box-shadow: none !important;
+    border-width: 2px !important;
+    color: var(--color-secondary) !important;
+}
+
+.form-control::placeholder {
+    color: var(--color-secondary) !important;
+}
+
+.custom-button {
+    border-color: var(--color-dark-blue) !important;
+    color: var(--color-secondary) !important;
+    font-family: 'Poppins';
+    &:hover {
+        background-color: var(--color-dark-blue) !important;
+        color: var(--color-primary) !important;
+    }
+}
+
+.delete-button {
+    border-color: red !important;
+    font-family: 'Poppins';
+    &:hover{
+        background-color: red !important;
+        color: white !important;
+    }
+    
+}

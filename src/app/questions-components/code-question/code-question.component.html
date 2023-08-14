@@ -1,0 +1,10 @@
+<div>
+    <p class="question">{{question.Question}}</p>
+    <div #editor id="editor"></div>
+    <div class="w-100 d-flex mt-3" [class]="id === 0 ? 'justify-content-end':'justify-content-between'">
+        <button mat-button class="btn confirm-button" [hidden]="id === 0" (click)="prev()">Prev</button>
+        <button mat-button class="btn confirm-button" [hidden]="id === (questionsLength - 1)"
+            (click)="next()">Next</button>
+        <button mat-button class="btn confirm-button" [hidden]="id !== (questionsLength - 1)" (click)="submit()">Submit</button>
+    </div>
+</div>

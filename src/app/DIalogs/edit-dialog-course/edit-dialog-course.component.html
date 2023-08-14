@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Edit Course</h1>
+<form class="content" [formGroup]="form" mat-dialog-content>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 mt-3">
+                <input type="text" formControlName="name" class="form-control" placeholder="Enter Course Name">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 mt-3">
+                <textarea type="text" formControlName="description" class="form-control" placeholder="Enter Description"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
+<div mat-dialog-actions>
+    <button mat-button type="submit" [disabled]="!form.valid" (click)="confirm(form.value)" class="confirm-button">Confirm</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</div>

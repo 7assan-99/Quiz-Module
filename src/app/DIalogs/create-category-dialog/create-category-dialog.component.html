@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>{{!isEdit ? 'Create ':'Edit '}}Category</h1>
+<form class="content" [formGroup]="form" mat-dialog-content>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 mt-3">
+                <input type="text" formControlName="name" class="form-control" placeholder="Enter Name">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 mt-3">
+                <input type="number" formControlName="noOfQuestions" class="form-control" placeholder="Enter No.of questions to appear in exam">
+            </div>
+        </div>
+    </div>
+</form>
+<div mat-dialog-actions>
+    <button mat-button type="submit" [disabled]="!form.valid" (click)="create(form.value)"
+        class="confirm-button">Confirm</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</div>

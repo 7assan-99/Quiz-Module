@@ -1,0 +1,35 @@
+<div class="container-fluid p-3" *ngIf="!isLoading && questions.length !== 0">
+    <div class="timer-container">
+        <p class="poppins">Time remaining: {{remainingTime}}</p>
+    </div>
+    <div *ngFor="let q of questions;let i=index">
+        <div class="question-card mt-5 row" [hidden]="questionCounter !== i">
+            <div class="col-lg-1 col-md-1 col-sm-2 col-2  rounded-2 grade-container d-flex flex-column align-items-center">
+                <p class="m-0 grade-label">Grade</p>
+                <p class="m-0">{{q.Points}}</p>
+            </div>
+            <div class="col-lg-11 col-md-11 col-sm-12 col-12" *ngIf="q.Question_Type === qType.MCQ">
+                <app-mcq-question [question]="q" (submitExam)="submit($event)" [questionsLength]="questions.length" (nextQ)="changeQuestion($event)" [id]="questionCounter"></app-mcq-question>
+            </div>
+            <div class="col-lg-11 col-md-11 col-sm-12 col-12" *ngIf="q.Question_Type === qType.SHORTANSWER">
+                <app-sa-question [question]="q" (submitExam)="submit($event)" [questionsLength]="questions.length" (nextQ)="changeQuestion($event)"
+                    [id]="questionCounter"></app-sa-question>
+            </div>
+            <div class="col-lg-11 col-md-11 col-sm-12 col-12" *ngIf="q.Question_Type === qType.CODE">
+                <app-code-question [question]="q" (submitExam)="submit($event)" (nextQ)="changeQuestion($event)" [questionsLength]="questions.length" [id]="questionCounter"></app-code-question>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid h-100 w-100 mt-5" *ngIf="!isLoading && questions.length === 0">
+        <h1 class="mx-auto poppins text-center text-danger">Exam Attempt Finished or You Are Accessing Exam Attmempt that is not
+            your's.</h1>
+        <h2 class="poppins text-center">You will be redirected to your dashboard.</h2>
+</div>
+<div class="container-fluid spinners-container h-75 d-flex justify-content-center align-items-center w-25 mx-auto"*ngIf="isLoading">
+    <div class="spinner-grow text-primary mx-auto"></div>
+    <div class="spinner-grow text-primary mx-auto"></div>
+    <div class="spinner-grow text-primary mx-auto"></div>
+</div>
+    

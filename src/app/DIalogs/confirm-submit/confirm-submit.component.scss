@@ -1,0 +1,13 @@
+h1 {
+    color: var(--color-secondary) !important;
+}
+
+.content {
+    color: var(--color-secondary) !important;
+}
+
+.confirm-button:hover {
+    background-color: var(--color-dark-blue) !important;
+    color: #fff !important;
+    transition: all 0.3s linear;
+}

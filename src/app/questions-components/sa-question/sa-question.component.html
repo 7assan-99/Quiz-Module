@@ -1,0 +1,14 @@
+<form [formGroup]="saForm" class="ps-3">
+    <p class="question">{{question.Question}}</p>
+    <div class="mb-3 mt-3">
+        <input type="text" class="form-control poppins" 
+        [value]="saForm.controls['answer'].value != '' ? saForm.controls['answer'].value : ''" 
+        formControlName="answer" placeholder="Enter Your Answer">
+    </div>
+    <div class="w-100 d-flex" [class]="id === 0 ? 'justify-content-end':'justify-content-between'">
+        <button mat-button class="btn confirm-button" [hidden]="id === 0" (click)="prev()">Prev</button>
+        <button mat-button class="btn confirm-button" [hidden]="id === (questionsLength - 1)" [disabled]="! this.saForm.valid" (click)="next()">Next</button>
+        <button mat-button class="btn confirm-button" [hidden]="id !== (questionsLength - 1)" [disabled]="! this.saForm.valid"
+            (click)="submit()">Submit</button>
+    </div>
+</form>

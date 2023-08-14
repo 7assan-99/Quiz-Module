@@ -1,0 +1,14 @@
+<div class="container-fluid flex-container h-100 p-0">
+    <h1 class="title p-0 ps-2 pt-3 m-0 poppins prevent-select">Courses</h1>
+    <div class="row container-fluid bg-color courses-container p-3 prevent-select" >
+        <div class="course-card shadow col-lg-3 col-md-6 col-sm-12 prevent-select" [routerLink]="['/id/course',c.ID,'overview']" *ngFor="let c of courses">
+            <div class="course-image">
+                <img src="../../../assets/bkg-1.jpg" alt="">
+            </div>
+            <div class="course-content">
+                <h3 class="poppins prevent-select">{{c.Name}}</h3>
+                <p class="poppins prevent-select">Created On: {{c.Created_On}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<form class="w-100 container-fluid" [formGroup]="form" (ngSubmit)="submit(form.value)">
+    <div class="row">
+        <div class="col">
+            <mat-chip-grid #chipGrid aria-label="Instructors selection">
+                <mat-chip-row *ngFor="let i of instructors" (removed)="remove(i)">
+                    {{i}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + i">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+            </mat-chip-grid>
+            <div class="mb-3 mt-3">
+                <input type="text" formControlName="instructor" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputFor]="chipGrid" (matChipInputTokenEnd)="add($event)" class="form-control ms-0"
+                    placeholder="Enter Instructor/s ID">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 mt-3">
+                <input type="text" id="course-form" (keydown)="onChange($event)" (focus)="onFocus()" list="courses"
+                    formControlName="courseName" class="form-control" placeholder="Enter Course Name"
+                    autocomplete="off">
+            </div>
+        </div>
+        <div class="data-list shadow p-1" *ngIf="isFocused && courses.length != 0">
+            <ul class="elements-list">
+                <li (click)="selectCourse(c)" *ngFor="let c of courses">{{c.Name}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" [disabled]="!form.valid" class="btn btn-outline-primary custom-button">Create</button>
+        </div>
+    </div>
+</form>

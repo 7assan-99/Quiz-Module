@@ -1,0 +1,44 @@
+.form-control {
+    border-color: var(--color-dark-blue);
+    border-width: 2px;
+    background-color: var(--color-primary);
+}
+
+.form-control:focus {
+    box-shadow: none;
+    color: var(--color-secondary) !important;
+}
+
+.form-control::placeholder {
+    color: var(--color-secondary) !important;
+}
+
+textarea.form-control {
+    resize: none;
+    min-height: 150px;
+}
+
+.edit-button{
+    color: var(--color-dark-blue);
+    transition: all 0.3s linear;
+    &:hover{
+        background-color: var(--color-dark-blue);
+        color: #fff;
+        transition: all 0.3s linear;
+    }
+}
+
+.container-width{
+    min-width: 600px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    transition: width 0.5s ease-in;
+    @media screen and (max-width: 650.98px){
+        transition: width 0.5s ease-in;
+        min-width: auto;
+    }
+}
+
+.bg-color{
+    background-color: var(--color-primary);
+}

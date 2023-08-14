@@ -1,0 +1,41 @@
+<div class="container-fluid m-0 p-0 vh-100">
+    <!-- navbar with white background -->
+    <nav class="navbar navbar-expand-sm mt-0 pt-2 shadow-none">
+        <!-- container of navbar components -->
+        <div class="container-fluid">
+            <!-- list of items in navbar -->
+            <ul class="navbar-nav">
+                <a class="navbar-brand poppins" href="#">Quiz</a>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-5">
+    
+        <h1 class="text-center title poppins">Login</h1>
+        <form class="container-fluid mt-5 mx-auto form" [formGroup]="loginForm" (ngSubmit)="authenticateUser(loginForm.value)">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="mb-3 mt-5">
+                        <input class="form-control" formControlName="id" placeholder="Enter Your ID">
+                        <mat-hint class="float-start ms-3" *ngIf="">welcome</mat-hint>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center mt-3">
+                    <div class="mb-3">
+                        <input class="form-control" type="password" formControlName="password" placeholder="Enter Password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-end mt-4">
+                    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-outline-primary custom-button">Sign In</button>
+                </div>
+            </div>
+        </form>   
+        
+    </div>
+</div>
+

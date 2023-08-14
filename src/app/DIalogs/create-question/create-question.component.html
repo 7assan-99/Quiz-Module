@@ -1,0 +1,96 @@
+<div [id]="accordionId" class="bg-white card">
+    <!-- the title of the accordion with the delete button -->
+    <div class="card-header d-flex justify-content-between">
+        <a class="btn poppins align-left" data-bs-toggle="collapse" role="button" aria-expanded="false" [href]="'#collapse'+accordionId">{{!isEdit && isCreate ? 'Create Question': this.q.Question}}</a>
+        <button mat-icon-button *ngIf="isEdit" class="poppins" (click)="deleteQuestion(accordionId)"><mat-icon>delete</mat-icon></button>
+    </div>
+    <div [id]="'collapse'+accordionId" class="collapse" [ngClass]="isCreate ? 'show':''" data-bs-parent="#accordion">
+        <div class="card-body">
+            <form class="content mx-auto" [formGroup]="form" mat-dialog-content>
+                <!-- div for the question -->
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3 mt-3">
+                            <textarea type="text" class="poppins" formControlName="name" class="form-control" placeholder="Enter Question"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- div for the category select box -->
+                <div class="row">
+                    <div class="col mb-3 mt-3">
+                        <ng-container #qCategory>
+                
+                        </ng-container>
+                    </div>
+                </div>
+                <!-- div for the question type select box -->
+                <div class="row">
+                    <div class="col mb-3 mt-3">
+                        <ng-container #questionTypeSelection>
+
+                        </ng-container>
+                    </div>
+                </div>
+                <!-- div for the question grade -->
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3 mt-3">
+                            <input type="number" class="poppins" formControlName="points" class="form-control" placeholder="Enter Question Points">
+                        </div>
+                    </div>
+                </div>
+                <!-- generating the options form fields -->
+                <div formArrayName="options" *ngFor="let o of optionForms.controls; let i=index" class="row">
+                    <div class="col mb-3 mt-3">
+                        <input type="text" class="poppins" [formControlName]="i"  class="form-control" [placeholder]="'Enter Option'+(i+1)">
+                    </div>
+                </div>
+                <div formArrayName="answer" *ngFor="let a of answerForms.controls; let i=index" class="row">
+                    <div class="col mb-3 mt-3">
+                        <input type="text" class="poppins" [formControlName]="i" class="form-control"
+                            [placeholder]="this.form.get('questionType').value === 'sa'  ? 'Set Answer '+(i+1):'Enter Option Index(Start from 0)'">
+                    </div>
+                </div>
+                <div class="row" *ngIf="this.form.get('questionType')?.value === 'code'">
+                    <div class="col mb-3 mt-3">
+                        <input type="text" formControlName="functionName" placeholder="Enter Function Name Precisely"
+                            class="form-control poppins">
+                    </div>
+                    <div class="row" formArrayName="codeTestCases" *ngFor="let c of codeTestForms.controls let i=index">
+                        <div [formGroupName]="i">
+                            <p class="poppins">Test Case {{i+1}}</p>
+                            <div class="col mb-3 mt-3 d-flex align-items-center">
+                                <input type="text" formControlName="parameters" placeholder="Enter the parameters"
+                                    class="form-control poppins">
+                                <button mat-icon-button #tooltip="matTooltip" class="poppins"
+                                    matTooltip="Seperate parameters by , and enter the string parameter in btw ' '"><mat-icon
+                                        matTooltipHideDelay="5000">info</mat-icon></button>
+                            </div>
+                            <div class="col mb-3 mt-3">
+                                <input type="text" formControlName="expectedOutput" placeholder="Enter Expected Output"
+                                    class="form-control poppins">
+                            </div>
+                        </div>
+                </div>
+                </div>
+                <button mat-button *ngIf="codeTestForms.length != 0 && this.form.controls['questionType'].value === 'code' "
+                    (click)="addTestCaseGroup()" class="confirm-button poppins">Add Test Case</button>
+                <button mat-button *ngIf="answerForms.length != 0 && this.form.controls['questionType'].value === 'sa' " (click)="addShortAnswer()"
+                    class="confirm-button poppins">Add Answer Field</button>
+            </form>
+            <div class="mt-3 mx-auto actions-section">
+                <!-- TODO: add the disable when form is valid -->
+                <button mat-button type="submit" [disabled]="!form.valid" *ngIf="isCreate && !isEdit else elseEditButton"  (click)="create(form.value)"
+                    class="confirm-button poppins">Create</button>
+                <ng-template #elseEditButton>
+                    <button mat-button type="submit" [disabled]="!form.valid" [hidden]="this.q.Question_Type === cqType.CODE" (click)="edit(form.value)"
+                        class="confirm-button poppins">Edit</button>
+                </ng-template>
+                <button class="poppins" mat-button *ngIf="isEdit && !isCreate" [hidden]="this.q.Question_Type === cqType.CODE" (click)="cancelQuestionEdit()">Cancel</button>
+                <button class="poppins" mat-button *ngIf=" !isEdit && isCreate" (click)="cancelQuestionCreation()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>

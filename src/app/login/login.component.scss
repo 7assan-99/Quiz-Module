@@ -1,0 +1,46 @@
+.container-fluid{
+    background-color: var(--color-primary);
+}
+
+.navbar-brand{
+    font-size: var(--font-size-md);
+    color: var(--color-dark-blue) !important;
+}
+
+.title{
+    font-size: var(--font-size-lg);
+    color: var(--color-secondary);
+}
+
+.login-button{
+    border-color: var(--color-dark-blue);
+    color: var(--color-secondary);
+
+    &:hover{
+        background-color: var(--color-dark-blue);
+        color: var(--color-primary)
+    }
+}
+
+.form{
+    max-width: 400px;
+}
+
+.navbar{
+    background-color: var(--color-primary) !important;
+}
+
+.form-control{
+    border-color: var(--color-dark-blue)!important;
+    border-width: 2px !important;
+    background-color: var(--color-primary) !important;
+}
+
+.form-control:focus{
+    box-shadow: none;
+    color: var(--color-secondary) !important;
+}
+
+.form-control::placeholder{
+    color: var(--color-secondary) !important;
+}

@@ -1,0 +1,55 @@
+<div class="container-fluid bg-white p-5 mb-3 w-100" *ngIf=" !isLoading && data.length !== 0">
+    <h1 class="poppins text-center">Exams Results</h1>
+    <div id="accordion">
+        <div class="card" *ngFor="let acc of data;let i=index">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <a class="btn" data-bs-toggle="collapse" [href]="'#collapse'+i">
+                    
+                    {{acc[0].Title}}
+                </a>
+                <div class="col d-flex justify-content-end mt-2">
+                    <h4 class="poppins">Grades Published: </h4>
+                    <div class="form-check form-switch ms-4">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" [checked]="acc[0].isPublished"
+                            (change)="onGradePublishChange($event,acc[0].ExamId)">
+                    </div>
+                </div>
+            </div>
+            <div [id]="'collapse'+i" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                    <div class="list-group">
+                        <a class="poppins list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between mt-2">
+                                <p class="ms-3 poppins">Student ID</p>
+                                <p class="ms-3 poppins">Start Time</p>
+                                <p class="ms-3 poppins">Finish Time</p>
+                                <p class="ms-3 poppins">Score</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                   <div class="list-group">
+                    <a *ngFor="let r of acc" class="poppins list-group-item list-group-item-action" >
+                        <div class="d-flex w-100 justify-content-between mt-2">
+                            <p class="ms-3 poppins">{{r.Student_ID}}</p>
+                            <p class="ms-3 poppins">{{r.StartTime}}</p>
+                            <p class="ms-3 poppins">{{r.FinishTime}}</p>
+                            <p class="ms-3 poppins">{{r.Score}}</p>
+                        </div>
+                    </a>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid d-flex flex-column justify-content-center w-100 h-100 m-auto" *ngIf="!isLoading && data.length === 0">
+    <img src="" alt="">
+    <h2>No exams are done OR results have not been published yet.</h2>
+</div>
+<div class="container-fluid spinners-container h-75 d-flex justify-content-center align-items-center mx-auto"
+    *ngIf="isLoading">
+    <div class="spinner-grow text-primary mx-auto"></div>
+    <div class="spinner-grow text-primary mx-auto"></div>
+    <div class="spinner-grow text-primary mx-auto"></div>
+</div>

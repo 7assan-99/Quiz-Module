@@ -1,0 +1,13 @@
+h1{
+    color: red !important;
+}
+
+.content{
+    color: var(--color-secondary) !important;
+}
+
+.confirm-button:hover{
+    background-color: red !important;
+    color: #fff !important;
+    transition: all 0.3s linear;
+}

@@ -1,0 +1,115 @@
+:host{
+    --color-border: #b3b3b3;
+    --color-bg-box: var(--color-primary);
+    --color-bg-hover-li: #f2f2f2;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: #888;
+
+    &:hover {
+        background: var(--color-dark-blue);
+    }
+}
+
+.wrap{
+    font-family: 'Poppins';
+    //top box for place holder and value
+    >.select-box{
+        width: 100%;
+        border-radius: 8px;
+        display: flex;
+        padding: 5px;
+        background-color: var(--color-bg-box);
+        align-items: center;
+        justify-content: space-between;
+
+        >.select-placeholder{
+            padding: 0;
+            padding-left: 10px;
+            color: var(--color-secondary);
+            margin: 0;
+        }
+        //search icon transform to up arrow
+        &.active{
+            >#arrow-icon{
+                transform: rotate(180deg);
+                transition: all 0.3s linear;
+            }
+        }
+        #arrow-icon{
+            transition: all 0.3s linear;
+        }
+    }
+
+    >.options-box{
+        display: none;
+        height: 200px;
+        overflow-y: auto;
+        transition: all 0.3s linear;
+        &.active{
+            display: block;
+            transition: all 0.3s linear;
+        }
+        width: 100%;
+        //search box styling
+        background-color: var(--color-bg-box);
+        border-radius: 8px;
+        padding: 5px;
+        padding-top: 15px;
+        margin: 0;
+        margin-top: 10px;
+        >.search-box{
+            display: flex;
+            flex-direction: row-reverse;
+            padding: 0;
+            margin:0;
+            justify-content: flex-end;
+            >input{
+                width: 90%;
+                position: relative;
+                font-size: 14px;
+                padding: 5px;
+                padding-left: 30px;
+                border: 0.5px solid var(--color-border);
+                border-radius: 5px;
+                outline: none;
+            }
+            >.search-icon{
+                color: #757575;
+                position: relative;
+                left: 30px;
+                top: 6px;
+                font-size: 20px;
+            }
+        }
+        >.options{
+            list-style-type: none;
+            padding: 5px;
+            padding-left: 22px;
+
+            >li{
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                padding: 5px;
+                &:hover{
+                    background-color: var(--color-bg-hover-li);
+                }
+            }
+        }
+    }
+}

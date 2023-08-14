@@ -1,0 +1,48 @@
+<div class="container-fluid flex-container row gap-lg-0 gap-md-0 gap-sm-4 gap-4">
+    <!-- side container category creation-->
+    <div class="container-fluid side col-lg-3 col-md-3 col-sm-12 shadow">
+        <h1 class="poppins text-center title">Create Category</h1>
+        <div class="container d-flex bg-color align-items-center justify-content-between p-1 rounded-3 mb-2" *ngFor="let c of categories">
+            <p class="poppins mb-0 ms-2">{{c.Name}}</p>
+            <div >
+                <button mat-icon-button (click)="editCategory(c.ID)" class="edit-btn"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button (click)="deleteCategory(c.ID)" class="del-btn"><mat-icon>delete</mat-icon></button>
+            </div>
+            
+        </div>
+        <div class="container d-flex align-items-center create-category-btn justify-content-between mt-3 p-1">
+            <p class="poppins mb-0 ms-2">create category</p>
+            <button mat-icon-button (click)="createCategory()"><mat-icon>add</mat-icon></button>
+        </div>
+    </div>
+
+    <!-- main container for questions creation -->
+    <div class="container-fluid main col-lg-9 col-md-9 col-sm-12">
+        <h1 class="poppins text-center title">Create Questions</h1>
+        <!-- div for the question cards to appear -->
+        <div id="accordion">
+            <mat-chip-listbox class="categories-chips-container" aria-label="Fish selection">
+                <mat-chip-option (click)="filterByChip(0)" selected="true" class="category-chip poppins">All</mat-chip-option>
+                <mat-chip-option (click)="filterByChip(c.ID)" *ngFor="let c of categories" class="category-chip poppins">{{c.Name}}</mat-chip-option>
+            </mat-chip-listbox>
+        <div class="d-flex w-100 justify-content-end">
+            <p class="me-3 poppins" [ngClass]="filteredQuestions.length < currentCategorySize ?'danger':'' ">No.of Questions {{filteredQuestions.length != questions.length ? '(current / required)' : ''}}: {{filteredQuestions.length}}{{filteredQuestions.length != questions.length ? ' / '+currentCategorySize : ''}} </p>
+            <p class="ms-3 poppins">Total Grade: {{totalGrade}}</p>
+        </div>
+        <app-create-question *ngFor="let q of filteredQuestions" (questionEdited)="questionUpdated($event)" [e]="exam" [q]="q" [accordionId]="q.ID" [isEdit]="true"
+            (delete)="deleteQuestion($event)" [categoryList]="categories"
+            ></app-create-question>
+        </div>
+        
+        <!-- div for creating the question card -->
+        <app-create-question (questionCreated)="questionCreated($event)" [e]="exam" [accordionId]="'0'" [isCreate]="true"
+            (cancelQuestionCreate)="cancelQuestionCreation($event)" [categoryList]="categories"
+            *ngIf="isCreating"></app-create-question>
+        <!-- --------- -->
+        <div class="container d-flex align-items-center create-category-btn justify-content-between mt-3 p-1">
+            <p class="poppins mb-0 ms-2">Create New Question</p>
+            <button mat-icon-button (click)="createQuestionForm()" [disabled]="isCreating"><mat-icon>add</mat-icon></button>
+        </div>
+    </div>
+    
+</div>

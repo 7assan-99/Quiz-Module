@@ -1,0 +1,13 @@
+<div class="container-fluid flex-container p-2 d-flex flex-lg-row flex-md-column flex-sm-column flex-xs-column h-100">
+    <div class="left-column flex-lg-column flex-md-row flex-sm-row p-3 mb-4 shadow rounded-2">
+        <ul class="nav nav-pills d-flex flex-lg-column flex-md-row flex-sm-row flex-xs-row">
+            <li class="nav-item mx-auto"><a class="nav-link p-3" routerLinkActive="active" [routerLink]="['view']">View Courses</a></li>
+            <li class="nav-item mx-auto"><a class="nav-link p-3" routerLinkActive="active" [routerLink]="['create']">Create Course</a></li>
+            <li class="nav-item mx-auto"><a class="nav-link p-3" routerLinkActive="active" [routerLink]="['addStudents']">Add Students</a></li>
+            <li class="nav-item mx-auto"><a class="nav-link p-3" routerLinkActive="active" [routerLink]="['addInstructors']">Add Instructors</a></li>
+        </ul>
+    </div>
+    <div class="right-column p-3 shadow rounded-2">
+        <router-outlet></router-outlet>
+    </div>
+</div>

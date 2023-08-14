@@ -1,0 +1,94 @@
+.flex-container{
+    min-height: 90%;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.create-category-btn{
+    border: 1px solid;
+    border-color: var(--color-dark-blue);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    &:hover{
+        background-color: var(--color-dark-blue);
+        color: var(--color-primary);
+        transition: all 0.3s linear;
+    }
+}
+
+/* width */
+.side::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+.side::-webkit-scrollbar-track {
+    border-radius: 0 20px 20px 0;
+    background: #f1f1f1;
+}
+
+/* Handle */
+.side::-webkit-scrollbar-thumb {
+    border-radius: 0 20px 20px 0;
+    background: #888;
+    &:hover{
+        background: var(--color-dark-blue);
+    }
+}
+
+.categories-chips-container{
+    margin-bottom: 10px;
+
+    .category-chip.mat-mdc-standard-chip.mat-primary.mat-mdc-chip-selected{
+        background-color: var(--color-dark-blue);
+    }
+}
+
+.danger{
+    color: red;
+}
+
+.side{
+    background-color: white;
+    border-radius: 0 20px 20px 0;
+    height: 500px !important;
+    overflow-y: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.main{
+    height: 600px !important;
+    overflow-y: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.bg-color{
+    background-color: var(--color-primary);
+}
+
+.button .mat-icon {
+    vertical-align: middle;
+}
+
+.edit-btn{
+    transition: color 0.2s linear;
+    &:hover{
+        color: var(--color-dark-blue);
+        transition: color 0.2s linear;
+    }
+    
+}
+
+.del-btn{
+    transition: color 0.2s linear;
+    &:hover{
+        color: red;
+        transition: color 0.2s linear;
+    }
+}
+
+.title{
+    color: var(--color-secondary);
+    font-size: var(--font-size-md);
+}

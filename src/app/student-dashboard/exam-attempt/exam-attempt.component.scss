@@ -1,0 +1,22 @@
+.question-card{
+    background-color: #fff;
+    padding: 20px;
+    max-width: 600px;
+    max-height: 900px;
+    margin: 20px auto;
+    border-radius: 10px;
+    .grade-container{
+        border: 0.5px solid var(--color-dark-blue);
+        height: fit-content;
+        padding: 0;
+        color: var(--color-secondary);
+        .grade-label {
+                border: none;
+                text-align: center;
+                width: 100%;
+                border-bottom: 0.5px solid var(--color-dark-blue)
+            }
+    }
+}
+
+
